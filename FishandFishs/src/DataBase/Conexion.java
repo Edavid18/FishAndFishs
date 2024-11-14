@@ -30,7 +30,7 @@ public class Conexion {
             System.out.println("Se conecto a la base de datos fishandfishs");
 
         } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println("No se conecto");
+        
             
             System.out.println("No se conecto");
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
