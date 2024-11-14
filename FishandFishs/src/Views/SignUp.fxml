@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1172.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerViews.SignUpController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1172.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerViews.SignUpController">
     <stylesheets>
         <URL value="@/CssVista/signup.css" />
     </stylesheets>
@@ -37,7 +37,7 @@
             <Label id="Data" layoutX="78.0" layoutY="226.0" prefHeight="17.0" prefWidth="84.0" stylesheets="@../CssVista/signup.css" text="Email" />
             <Label id="Data" layoutX="78.0" layoutY="294.0" prefHeight="17.0" prefWidth="216.0" stylesheets="@../CssVista/signup.css" text="Phone Number" />
             <Label id="Data" layoutX="78.0" layoutY="361.0" prefHeight="17.0" prefWidth="238.0" stylesheets="@../CssVista/signup.css" text="Password" />
-            <PasswordField id="info" fx:id="password" layoutX="77.0" layoutY="384.0" prefHeight="28.0" prefWidth="396.0" promptText="•••••••••••" stylesheets="@../CssVista/signup.css" />
+            <PasswordField id="info" fx:id="password" layoutX="79.0" layoutY="400.0" prefHeight="28.0" prefWidth="396.0" promptText="•••••••••••" stylesheets="@../CssVista/signup.css" />
             <Separator layoutX="76.0" layoutY="486.0" prefHeight="8.0" prefWidth="396.0" />
             <Label id="terms" layoutX="139.0" layoutY="523.0" stylesheets="@../CssVista/signup.css" text="Please read carefully before proceeding. Welcome!" />
          </children>

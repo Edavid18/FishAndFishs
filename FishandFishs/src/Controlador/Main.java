@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import DataBase.Conexion;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -19,6 +20,7 @@ import javafx.scene.layout.Pane;
 
 public class Main extends Application{
     
+    Conexion cx = new Conexion();
    
     
     /**
@@ -27,7 +29,7 @@ public class Main extends Application{
     public void start(Stage primaryStage) {
 
         try {
-            
+            cx.Connection();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/Views/LandingPage.fxml"));
             Pane ventana = (Pane) loader.load();
