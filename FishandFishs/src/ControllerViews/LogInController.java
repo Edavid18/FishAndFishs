@@ -22,6 +22,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import userSession.UserSession;
 
 /**
  * FXML Controller class
@@ -71,7 +72,7 @@ public class LogInController implements Initializable {
         }
         
     }
-
+    
     @FXML
     private void LogIn(ActionEvent event) {
         
@@ -79,6 +80,9 @@ public class LogInController implements Initializable {
             goToAdminPage(event);
         }else if (model.logInUser(email.getText(), password.getText())) {
             goToCatalogue(event);
+            int u1 = UserSession.getUserId();
+            String u2 = UserSession.getName();
+            System.out.println("this is the id " + u1 + " and his name is :"+ u2);
         }
     }
     

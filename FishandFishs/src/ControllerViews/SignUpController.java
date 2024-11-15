@@ -89,7 +89,7 @@ public class SignUpController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         
-        Conexion cx = new Conexion();
+        Conexion cx = Conexion.getInstance();
        // stage.initModality(Modality.APPLICATION_MODAL); sirve para no salir hasta terminar el programa
         stage.setScene(scene);
         

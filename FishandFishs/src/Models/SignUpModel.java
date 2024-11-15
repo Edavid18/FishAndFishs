@@ -19,7 +19,7 @@ public class SignUpModel {
     
     
     public boolean signUpUser(String user, String password, String name, String number) {
-        Conexion conexion = new Conexion();
+        Conexion conexion = Conexion.getInstance();
         Connection conn = conexion.Connection();
         PreparedStatement stmt = null;
         try {

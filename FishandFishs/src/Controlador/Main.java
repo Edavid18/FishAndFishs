@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import userSession.UserSession;
 
 /**
  *
@@ -20,8 +21,7 @@ import javafx.scene.layout.Pane;
 
 public class Main extends Application{
     
-    Conexion cx = new Conexion();
-   
+    Conexion cx = Conexion.getInstance();
     
     /**
      * @param args the command line arguments
@@ -39,9 +39,6 @@ public class Main extends Application{
             Scene scene = new Scene(ventana);
             primaryStage.setScene(scene);
             primaryStage.show();
-            
-           
-            
             
             
         } catch (IOException e) {

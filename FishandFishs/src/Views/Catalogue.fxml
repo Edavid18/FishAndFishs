@@ -40,6 +40,7 @@
                                     <Image url="@../images/icon/me-gusta.png" />
                                  </image>
                               </ImageView>
+                              <Label fx:id="welcome" layoutX="77.0" layoutY="10.0" styleClass="info_labels" stylesheets="@../CssVista/catalogue.css" />
                            </children>
                         </Pane>
                         <Pane id="main_image" layoutX="71.0" layoutY="107.0" prefHeight="380.0" prefWidth="1181.0" stylesheets="@../CssVista/catalogue.css">

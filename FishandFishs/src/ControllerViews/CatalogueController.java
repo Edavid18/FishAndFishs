@@ -14,10 +14,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import userSession.UserSession;
 
 /**
  * FXML Controller class
@@ -34,6 +36,8 @@ public class CatalogueController implements Initializable {
     private Pane oceaplugger;
     @FXML
     private Pane freaky;
+    @FXML
+    private Label welcome;
 
     /**
      * Initializes the controller class.
@@ -41,10 +45,11 @@ public class CatalogueController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        welcome.setText("Welcome, " + UserSession.getName());
     }    
-    // FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/VistaCompra.fxml"));
-     VistaCompraController obj = new VistaCompraController();
-
+    //FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/VistaCompra.fxml"));
+    VistaCompraController obj = new VistaCompraController();
+    
     @FXML
     private void Cana1(MouseEvent event) {
         obj.cambiar("Fishing Rod Pro",489.99,"1001","/images/canas1/shimano-ocea-plugger.jpg");
@@ -130,15 +135,12 @@ public class CatalogueController implements Initializable {
         obj.cambiar("Ugly Stick Gx2",539.99,"1002","/images/canas1/ugly-stik-gx2.jpg");
     }
 
-    @FXML
-    private void goToShoppingCart(ActionEvent event) {
-        
-    }
 
     @FXML
     private void goToLogIn(ActionEvent event) {
         try{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/LandingPage.fxml"));
+        UserSession.logout();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/LandingPage.fxml"));
         Parent root = loader.load();
         LandingPageController controlador = loader.getController();
         Scene scene = new Scene(root);
@@ -156,10 +158,6 @@ public class CatalogueController implements Initializable {
         }
     }
 
-    @FXML
-    private void goToWishList(ActionEvent event) {
-       
-    }
 
     @FXML
     private void goToHistory(ActionEvent event) {
