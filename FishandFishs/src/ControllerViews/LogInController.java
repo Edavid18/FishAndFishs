@@ -5,6 +5,7 @@
 package ControllerViews;
 
 
+import Models.LogInModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,20 +40,20 @@ public class LogInController implements Initializable {
     @FXML
     private PasswordField password;
 
-   
+    LogInModel model = new LogInModel();
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     @FXML
     private void GoSignUp(ActionEvent event) {
         try{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/SignUp.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/SignUp.fxml"));
         Parent root = loader.load();
         SignUpController controlador = loader.getController();
         Scene scene = new Scene(root);
@@ -74,13 +75,9 @@ public class LogInController implements Initializable {
     @FXML
     private void LogIn(ActionEvent event) {
         
-        
-        String user = email.getText();
-        String pw = password.getText();
-
-        if (user.equals("ruben") && pw.equals("ruben")) {
+        if(email.getText().equals("root")){
             goToAdminPage(event);
-        }else{
+        }else if (model.logInUser(email.getText(), password.getText())) {
             goToCatalogue(event);
         }
     }

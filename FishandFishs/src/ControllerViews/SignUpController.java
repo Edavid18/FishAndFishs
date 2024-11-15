@@ -5,8 +5,14 @@
 package ControllerViews;
 
 
+import DataBase.Conexion;
+import Models.SignUpModel;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,19 +45,21 @@ public class SignUpController implements Initializable {
     private PasswordField password;
     @FXML
     private Button signUp;
-
+    
+    private SignUpModel model;
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL
+            url, ResourceBundle rb) {
+        model = new SignUpModel();
     }    
 
     @FXML
     private void Back(ActionEvent event){
         try{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/LogIn.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/LogIn.fxml"));
         Parent root = loader.load();
         LogInController controlador = loader.getController();
         Scene scene = new Scene(root);
@@ -71,13 +79,17 @@ public class SignUpController implements Initializable {
 
     @FXML
     private void SignUp(ActionEvent event) {
+        
+        model.signUpUser(email.getText(), password.getText(), name.getText(), phone.getText());
        
         try{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/LogIn.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/LogIn.fxml"));
         Parent root = loader.load();
         LogInController controlador = loader.getController();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
+        
+        Conexion cx = new Conexion();
        // stage.initModality(Modality.APPLICATION_MODAL); sirve para no salir hasta terminar el programa
         stage.setScene(scene);
         

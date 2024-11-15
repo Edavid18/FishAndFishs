@@ -19,7 +19,7 @@ public class Conexion {
     String bd = "fishandfishsdb";
     String url = "jdbc:mysql://localhost:3306/";
     String user = "root";
-    String password = "";
+    String password = "root1234";
     String driver = "com.mysql.cj.jdbc.Driver";
     Connection cx;
 
