@@ -4,6 +4,7 @@
  */
 package ControllerViews;
 
+import Models.CatalogueModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -32,6 +33,8 @@ import userSession.UserSession;
  */
 public class CatalogueController implements Initializable {
 
+    CatalogueModel model = new CatalogueModel();
+    
     @FXML
     private AnchorPane rootpane;
     @FXML
@@ -75,35 +78,14 @@ public class CatalogueController implements Initializable {
         System.out.println(UserSession.getName());
     }
     
-    private final Map<String, Product> products = new HashMap<>();
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        welcome.setText("Welcome, " + UserSession.getName());
-        products.put("Cana1", new Product("Fishing Rod Pro", 489.99, "1001", "/images/canas1/shimano-ocea-plugger.jpg"));
-        products.put("plugger", new Product("Ocea Plugger", 719.99, "1003", "/images/canas1/oceaplugger.png"));
-        products.put("uglstick", new Product("Ugly Freaky Stick", 69.99, "1004", "/images/canas1/fiberglass.png"));
-        products.put("mercury", new Product("Mercury Avator 7.5", 3499.99, "5001", "/images/canas1/mercury.jpg"));
-        products.put("yeti", new Product("YETY Cooler", 299.99, "3001", "/images/miselanea/yeti-tundra-45-cooler-1.png"));
-        products.put("coleman", new Product("Cooleman 316", 49.99, "3002", "/images/miselanea/coleman-316-series-.jpg"));
-        products.put("american", new Product("American kit", 49.99, "4001", "/images/miselanea/kit .png"));
-        products.put("Devianton", new Product("Deviaton 6 Boot", 134.99, "2001", "/images/miselanea/boots.png"));
-        products.put("xtratuf", new Product("Xtratuf", 139.99, "2002", "/images/miselanea/ADSM100_LARGE.jpg"));
-        products.put("stringer", new Product("Stringer198", 45000, "6001", "/images/botes/Stinger-198-Metallic-Blue.png"));
-        products.put("machine", new Product("Fishing Macihe", 35000, "6002", "/images/botes/fishingmachine.png"));
-        products.put("thevw", new Product("The VW", 60000, "6003", "/images/botes/lb-wv1670.png"));
-        products.put("lblegacy", new Product("LB Legacy", 22325, "6004", "/images/botes/lb-legacy.png"));
-        products.put("Rough", new Product("Roughneck 2070", 27000, "6005", "/images/botes/lb-roughneck-2070.png"));
-        products.put("fishand", new Product("Fish and Sky", 50000, "6006", "/images/botes/lb-fs1900.png"));
-        products.put("rs270", new Product("RS 270", 74600, "6007", "/images/botes/lb-rs27ew.png"));
-        products.put("g2", new Product("Ugly Stick Gx2", 539.99, "1002", "/images/canas1/ugly-stik-gx2.jpg"));
     }    
-    // FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/VistaCompra.fxml"));
-     VistaCompraController obj = new VistaCompraController();
+    VistaCompraController obj = new VistaCompraController();
 
     @FXML
     private void goToLogIn(ActionEvent event) {
@@ -122,7 +104,7 @@ public class CatalogueController implements Initializable {
         
         }
         catch(IOException ex){
-           
+        
         }
     }
     @FXML
@@ -131,9 +113,9 @@ public class CatalogueController implements Initializable {
         String controlId = ((Node) event.getSource()).getId();
 
         // Find the product
-        Product product = products.get(controlId);
+        String[] product = model.getProductDetail(controlId);
         if (product != null) {
-            obj.cambiar(product.name, product.price, product.code, product.imagePath);
+            obj.cambiar(product[0], Double.parseDouble(product[1]), product[2], product[3]);
         }
     }
 
@@ -155,20 +137,6 @@ public class CatalogueController implements Initializable {
     @FXML
     private void Goboats(MouseEvent event) {
         
-    }
-    
-    private static class Product {
-        String name;
-        double price;
-        String code;
-        String imagePath;
-
-        public Product(String name, double price, String code, String imagePath) {
-            this.name = name;
-            this.price = price;
-            this.code = code;
-            this.imagePath = imagePath;
-        }
     }
     
 }
