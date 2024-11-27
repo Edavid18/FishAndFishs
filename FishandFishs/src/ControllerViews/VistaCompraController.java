@@ -59,8 +59,7 @@ public class VistaCompraController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     
-        // TODO
+    
         amount.getItems().addAll("1", "2", "3", "4", "5");
         amount.setValue("1");
         
@@ -95,12 +94,10 @@ public class VistaCompraController implements Initializable {
         catch(IOException ex){
             System.out.println(ex);
         }
-}
+    }
 
     @FXML
     private void addToCart(ActionEvent event) {
-        
-        
         
         /*aded.setText("New Item Added to Cart");
         Timeline time = new Timeline(new KeyFrame(Duration.seconds(1),ae-> aded.setText("")));

@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="865.0" prefWidth="1316.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerViews.CatalogueController">
     <stylesheets>
-        <URL value="@/CssVista/catalogue.css" />
+        <URL value="@CssVista/catalogue.css" />
     </stylesheets>
    <children>
       <ScrollPane hbarPolicy="ALWAYS" layoutY="14.0" prefHeight="857.0" prefWidth="1316.0">
@@ -40,7 +40,11 @@
                                     <Image url="@../images/icon/me-gusta.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="welcome" layoutX="77.0" layoutY="10.0" styleClass="info_labels" stylesheets="@../CssVista/catalogue.css" />
+                              <Label fx:id="welcome" layoutX="91.0" layoutY="10.0">
+                                 <font>
+                                    <Font name="System Bold" size="33.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </Pane>
                         <Pane id="main_image" layoutX="71.0" layoutY="107.0" prefHeight="380.0" prefWidth="1181.0" stylesheets="@../CssVista/catalogue.css">
@@ -60,7 +64,7 @@
                         <Pane id="fishing_rods_container" layoutX="70.0" layoutY="523.0" prefHeight="337.0" prefWidth="1183.0" stylesheets="@../CssVista/catalogue.css">
                            <children>
                               <Label layoutX="14.0" styleClass="info_labels" stylesheets="@../CssVista/catalogue.css" text="Fishing Rods" />
-                              <Pane layoutX="14.0" layoutY="48.0" onMouseClicked="#Cana1" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="Cana1" layoutX="14.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <Label layoutX="13.0" layoutY="162.0" text="\$ 489.99 USD">
                                        <font>
@@ -80,7 +84,7 @@
                                     </ImageView>
                                  </children>
                               </Pane>
-                              <Pane fx:id="uglygx2" layoutX="243.0" layoutY="48.0" onMouseClicked="#g2" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="g2" layoutX="243.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="122.0" fitWidth="183.0" layoutX="46.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -100,7 +104,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Ugly Stick gx2" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane fx:id="oceaplugger" layoutX="473.0" layoutY="48.0" onMouseClicked="#plugger" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="plugger" layoutX="473.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="45.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -120,7 +124,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Ocea Plugger" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane fx:id="freaky" layoutX="704.0" layoutY="48.0" onMouseClicked="#uglstcik" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="uglstick" layoutX="704.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="39.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -140,7 +144,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Ugly Freaky Stick" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane layoutX="938.0" layoutY="48.0" onMouseClicked="#mercury" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="mercury" layoutX="938.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="51.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -165,7 +169,7 @@
                         <Pane id="fishing_rods_container" layoutX="70.0" layoutY="879.0" prefHeight="337.0" prefWidth="1183.0" stylesheets="@../CssVista/catalogue.css">
                            <children>
                               <Label layoutX="14.0" styleClass="info_labels" stylesheets="@../CssVista/catalogue.css" text="Micellaneous" />
-                              <Pane layoutX="14.0" layoutY="48.0" onMouseClicked="#yeti" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="yeti" layoutX="14.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <Label layoutX="13.0" layoutY="162.0" text="\$ 299.99  USD">
                                        <font>
@@ -185,7 +189,7 @@
                                     </ImageView>
                                  </children>
                               </Pane>
-                              <Pane layoutX="243.0" layoutY="48.0" onMouseClicked="#coleman" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="coleman" layoutX="243.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="113.0" fitWidth="175.0" layoutX="26.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -205,7 +209,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Cooleman 316 Series Cooler" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane layoutX="473.0" layoutY="48.0" onMouseClicked="#american" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="american" layoutX="473.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="205.0" layoutX="33.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -229,7 +233,7 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <Pane layoutX="704.0" layoutY="48.0" onMouseClicked="#Devianton" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="Devianton" layoutX="704.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="38.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -249,7 +253,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Deviation 6''  Ankle Boot" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane layoutX="938.0" layoutY="48.0" onMouseClicked="#xtratuf" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="xtratuf" layoutX="938.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="44.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -274,7 +278,7 @@
                         <Pane id="fishing_rods_container" layoutX="70.0" layoutY="1251.0" prefHeight="577.0" prefWidth="1183.0" stylesheets="@../CssVista/catalogue.css">
                            <children>
                               <Label layoutX="14.0" onMouseClicked="#Goboats" styleClass="info_labels" stylesheets="@../CssVista/catalogue.css" text="Boats" />
-                              <Pane layoutX="473.0" layoutY="48.0" onMouseClicked="#stringer" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="stringer" layoutX="473.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -294,7 +298,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Stinger198" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane layoutX="704.0" layoutY="48.0" onMouseClicked="#machine" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="machine" layoutX="704.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -314,7 +318,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Fishing Machine 1800 SC" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane layoutX="938.0" layoutY="48.0" onMouseClicked="#thevw" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="thevw" layoutX="938.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -334,7 +338,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="The VW  - 1670" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane layoutX="472.0" layoutY="301.0" onMouseClicked="#lblegacy" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="lblegacy" layoutX="472.0" layoutY="301.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -354,7 +358,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="LB Legacy" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane layoutX="703.0" layoutY="301.0" onMouseClicked="#Rough" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="Rough" layoutX="703.0" layoutY="301.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -374,7 +378,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Roughneck 2070 SC" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane layoutX="937.0" layoutY="301.0" onMouseClicked="#fishand" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="fishand" layoutX="937.0" layoutY="301.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -394,7 +398,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Fish And Sky 2200" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane layoutX="14.0" layoutY="49.0" onMouseClicked="#rs270" prefHeight="489.0" prefWidth="440.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane fx:id="rs270" layoutX="14.0" layoutY="49.0" onMouseClicked="#handleProductClick" prefHeight="489.0" prefWidth="440.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
                                  <children>
                                     <ImageView fitHeight="310.0" fitWidth="415.0" layoutX="13.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

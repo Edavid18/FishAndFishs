@@ -93,7 +93,7 @@ public class LogInController implements Initializable {
         CatalogueController controlador = loader.getController();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-       // stage.initModality(Modality.APPLICATION_MODAL); sirve para no salir hasta terminar el programa
+        // stage.initModality(Modality.APPLICATION_MODAL); sirve para no salir hasta terminar el programa
         stage.setScene(scene);
         
         stage.show();

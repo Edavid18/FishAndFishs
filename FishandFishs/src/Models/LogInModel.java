@@ -26,7 +26,7 @@ public class LogInModel {
             Statement st = cx.Connection().createStatement ();
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                UserSession.getInstance(getUserDetails(us, pw), us);
+                UserSession.setInstance(getUserDetails(us, pw), us);
                 return true;
             }else{
                 return false;

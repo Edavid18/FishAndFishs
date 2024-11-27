@@ -27,7 +27,7 @@ public class UserSession {
         UserSession.phone = details[2];
     }
 
-    public static UserSession getInstance(String[] details, String user) {
+    public static UserSession setInstance(String[] details, String user) {
         if (instance == null) {
             instance = new UserSession(details, user);
         }

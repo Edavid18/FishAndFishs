@@ -26,23 +26,23 @@ public class Main extends Application{
     /**
      * @param args the command line arguments
      */
+    @Override
     public void start(Stage primaryStage) {
 
         try {
             cx.Connection();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("/Views/LandingPage.fxml"));
+            System.out.println(Main.class.getResource("/Views/LogIn.fxml"));
+            loader.setLocation(Main.class.getResource("/Views/LogIn.fxml"));
             Pane ventana = (Pane) loader.load();
-            
             
             // Show the scene containing the root layout.
             Scene scene = new Scene(ventana);
             primaryStage.setScene(scene);
             primaryStage.show();
             
-            
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e);
         }
     }
 
