@@ -37,4 +37,26 @@ public class CatalogueModel {
     return details;
     }
     
+    public void addProductShoppingList(int userId, int prodId, String amount){
+        Conexion conexion = Conexion.getInstance();
+        Connection conn = conexion.Connection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "INSERT INTO shoppingList (userId, prodId, amount) VALUES (?, ?, ?)";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, userId);
+            stmt.setInt(2, prodId);
+            stmt.setString(3, amount);
+
+            int rowsAffected = stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }

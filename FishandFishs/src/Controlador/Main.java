@@ -22,9 +22,6 @@ public class Main extends Application{
     
     Conexion cx = Conexion.getInstance();
     
-    /**
-     * @param args the command line arguments
-     */
     @Override
     public void start(Stage primaryStage) {
 

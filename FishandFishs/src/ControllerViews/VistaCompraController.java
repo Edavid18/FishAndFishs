@@ -4,6 +4,7 @@
  */
 package ControllerViews;
 
+import Models.CatalogueModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import userSession.UserSession;
 
 /**
  * FXML Controller class
@@ -53,6 +55,8 @@ public class VistaCompraController implements Initializable {
     private Button wishListButton;
     @FXML
     private Label aded;
+    
+    CatalogueModel model = new CatalogueModel();
     
     /**
      * Initializes the controller class.
@@ -99,12 +103,13 @@ public class VistaCompraController implements Initializable {
     @FXML
     private void addToCart(ActionEvent event) {
         
-        /*aded.setText("New Item Added to Cart");
+        model.addProductShoppingList(UserSession.getUserId(), Integer.parseInt(id), amount.getValue());
+        aded.setText("New Item Added to Cart");
         Timeline time = new Timeline(new KeyFrame(Duration.seconds(1),ae-> aded.setText("")));
         time.play();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Timeline cierre = new Timeline(new KeyFrame(Duration.seconds(1),ae->stage.close()));
-        cierre.play();*/
+        cierre.play();
     }
 
     @FXML

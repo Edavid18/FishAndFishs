@@ -75,7 +75,7 @@ public class CatalogueController implements Initializable {
     private Pane rs270;
     
     public CatalogueController(){
-        System.out.println(UserSession.getName());
+        
     }
     
     /**
@@ -84,6 +84,7 @@ public class CatalogueController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        welcome.setText("Welcome, " + UserSession.getName());
     }    
     VistaCompraController obj = new VistaCompraController();
 
@@ -126,7 +127,23 @@ public class CatalogueController implements Initializable {
 
     @FXML
     private void carro(MouseEvent event) {
+        try{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/ShoppingCart.fxml"));
+        Parent root = loader.load();
+        ShoppingCartController controlador = loader.getController();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+       // stage.initModality(Modality.APPLICATION_MODAL); sirve para no salir hasta terminar el programa
+        stage.setScene(scene);
         
+        stage.show();
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
+        
+        }
+        catch(IOException ex){
+        
+        }
     }
 
     @FXML
