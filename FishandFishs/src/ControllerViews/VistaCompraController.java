@@ -114,14 +114,12 @@ public class VistaCompraController implements Initializable {
 
     @FXML
     private void addToWishList(ActionEvent event) {
-        
+        model.addProductWishList(UserSession.getUserId(), Integer.parseInt(id), amount.getValue());
+        aded.setText("New Item Added to Wish List");
+        Timeline time = new Timeline(new KeyFrame(Duration.seconds(1),ae-> aded.setText("")));
+        time.play();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Timeline cierre = new Timeline(new KeyFrame(Duration.seconds(1),ae->stage.close()));
+        cierre.play();
     }
-
-    private void buy(ActionEvent event) {
-        
-    }
-    
-
-    
-    
 }

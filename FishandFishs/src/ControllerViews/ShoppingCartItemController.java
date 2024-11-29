@@ -106,7 +106,7 @@ public class ShoppingCartItemController implements Initializable, Observable {
             notifyObservers();
         }else if(buy){
             checkout.model.deleteOrder(Integer.parseInt(id));
-            checkout.refreshItems();
+            notifyObservers();
         }
         
     }

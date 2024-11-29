@@ -4,6 +4,7 @@
  */
 package ControllerViews;
 
+import Interfaces.Observer;
 import Models.CheckoutModel;
 import Models.ShoppingCartModel;
 import java.io.IOException;
@@ -30,7 +31,7 @@ import userSession.UserSession;
  *
  * @author eliasvidal
  */
-public class CheckoutController implements Initializable {
+public class CheckoutController implements Initializable, Observer {
 
     @FXML
     private VBox itemsPane;
@@ -53,32 +54,13 @@ public class CheckoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        loadItems();
+        update();
         payButton.setDisable(true);
     }    
     
     ShoppingCartModel shoppingItems = new ShoppingCartModel();
     CheckoutModel model = new CheckoutModel();
     private ArrayList<Integer> shoppingCartItems = shoppingItems.getProdID(UserSession.getUserId());
-    
-    private void loadItems() {
-        try {
-            itemsPane.getChildren().clear();
-            
-            for (int i = 0; i < shoppingCartItems.size(); i++) {
-                String[] product = shoppingItems.getProductDetail(shoppingCartItems.get(i));
-                String[] order = shoppingItems.getProductAmount(shoppingCartItems.get(i), UserSession.getUserId());
-                addItem(product[0], product[1], order[0], product[2], order[1]);
-            }
-            
-            double subTotalAmount = model.getSubTotal(shoppingCartItems);
-            subTotal.setText(String.valueOf(subTotalAmount));
-            
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     
     private void addItem(String name, String price, String desc, String route, String id) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/ShoppingCartItem.fxml"));
@@ -87,17 +69,9 @@ public class CheckoutController implements Initializable {
         ShoppingCartItemController controller = loader.getController();
         controller.changeLabels(name, price, desc, route, id);
         controller.setCheckOutController(this);
+        controller.addObserver(this);
 
-        /*if (itemsPane.getChildren().isEmpty()) {
-            itemsPane.getChildren().add(shoppingCartItem); // If empty, just add the item
-        }else {
-            itemsPane.getChildren().add(itemsPane.getChildren().size() - 1, shoppingCartItem); // Adds above the last item
-        }*/ 
         itemsPane.getChildren().add(shoppingCartItem);
-    }
-    
-    public void refreshItems() {
-        loadItems();
     }
 
     @FXML
@@ -131,12 +105,13 @@ public class CheckoutController implements Initializable {
         
         for (int i = 0; i < shoppingCartItems.size(); i++) {
             String[] order = shoppingItems.getProductAmount(shoppingCartItems.get(i), UserSession.getUserId());
-            model.addProductHistory(UserSession.getUserId(), shoppingCartItems.get(i), order[1]);
+            model.addProductHistory(UserSession.getUserId(), shoppingCartItems.get(i), order[0]);
+            model.deleteOrder(Integer.parseInt(order[1]));
         }
-        refreshItems();
+        update();
         
         try{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Catalogue.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Catalogue.fxml"));
         Parent root = loader.load();
         CatalogueController controlador = loader.getController();
         Scene scene = new Scene(root);
@@ -151,6 +126,27 @@ public class CheckoutController implements Initializable {
         }
         catch(IOException ex){
            
+        }
+    }
+
+    @Override
+    public void update() {
+        try {
+            itemsPane.getChildren().clear();
+            shoppingCartItems = shoppingItems.getProdID(UserSession.getUserId());
+            
+            for (int i = 0; i < shoppingCartItems.size(); i++) {
+                String[] product = shoppingItems.getProductDetail(shoppingCartItems.get(i));
+                String[] order = shoppingItems.getProductAmount(shoppingCartItems.get(i), UserSession.getUserId());
+                addItem(product[0], product[1], order[0], product[2], order[1]);
+            }
+            
+            double subTotalAmount = model.getSubTotal(shoppingCartItems);
+            subTotal.setText(String.valueOf(subTotalAmount));
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     

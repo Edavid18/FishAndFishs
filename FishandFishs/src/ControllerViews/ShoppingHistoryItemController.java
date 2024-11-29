@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package ControllerView;
+package ControllerViews;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,11 +39,10 @@ public class ShoppingHistoryItemController implements Initializable {
         
     }    
     
-    public void changeLabels(String productName, String price, String description, String route, String id, String date){
+    public void changeLabels(String productName, String price, String description, String route, String id){
         ProdName.setText(productName);
         this.price.setText(price);
         desc.setText(description);
-        this.date.setText(date);
 
         Image imagen = new Image(route);
         imgSrc.setImage(imagen);

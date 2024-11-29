@@ -4,7 +4,8 @@
  */
 package ControllerViews;
 
-import Models.ShoppingHistoryModel;
+import Interfaces.Observer;
+import Models.WishListModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,40 +27,31 @@ import userSession.UserSession;
  *
  * @author eliasvidal
  */
-
-public class ShoppingHistoryController implements Initializable {
+public class WishListController implements Initializable, Observer {
 
     @FXML
     private VBox itemsPane;
     
-    ShoppingHistoryModel model = new ShoppingHistoryModel();
-    ArrayList<Integer> itemsInHistory = model.getProdID(UserSession.getUserId());
+    WishListModel model = new WishListModel();    
 
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        try {
-            itemsPane.getChildren().clear();
-            
-            for (int i = 0; i < itemsInHistory.size(); i++) {
-                String[] product = model.getProductDetail(itemsInHistory.get(i));
-                String[] order = model.getProductAmount(itemsInHistory.get(i), UserSession.getUserId());
-                addItem(product[0], order[0], product[1], product[2], order[1]);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }    
+        update();
+    }
     
-    private void addItem(String name, String price, String desc, String route, String id) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/ShoppingHistoryItem.fxml"));
-        AnchorPane ks = loader.load();
+    private void addItem(String name, String price, String amount, String route, String id, int idp) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/WishListItem.fxml"));
+        AnchorPane shoppingCartItem = loader.load();
         
-        ShoppingHistoryItemController controller = loader.getController();
-        controller.changeLabels(name, price, desc, route, id);
-        
-        
-        itemsPane.getChildren().add(ks);
+        WishListItemController controller = loader.getController();
+        controller.changeLabels(name, price, amount, route, id, String.valueOf(idp));
+        controller.setWishListController(this);
+        controller.addObserver(this);
+
+        itemsPane.getChildren().add(shoppingCartItem);
     }
 
     @FXML
@@ -77,9 +69,27 @@ public class ShoppingHistoryController implements Initializable {
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.close();
         
+        }catch(IOException ex){
         }
-        catch(IOException ex){
-           
+    }
+
+    @Override
+    public void update() {
+        try {
+            itemsPane.getChildren().clear();
+            ArrayList<Integer> wishListItems = model.getProdID(UserSession.getUserId());
+            
+            for (int i = 0; i < wishListItems.size(); i++) {
+                
+                String[] order = model.getProductAmount(wishListItems.get(i), UserSession.getUserId());
+
+                String[] product = model.getProductDetail(wishListItems.get(i));
+
+                addItem(product[0], product[1], order[0], product[2], order[1], wishListItems.get(i));
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     
