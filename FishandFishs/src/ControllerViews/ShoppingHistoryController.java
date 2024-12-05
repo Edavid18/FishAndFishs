@@ -34,6 +34,8 @@ public class ShoppingHistoryController implements Initializable {
     
     ShoppingHistoryModel model = new ShoppingHistoryModel();
     ArrayList<Integer> itemsInHistory = model.getProdID(UserSession.getUserId());
+    ArrayList<String[]> order = model.getProductAmount(UserSession.getUserId());
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -41,10 +43,10 @@ public class ShoppingHistoryController implements Initializable {
         try {
             itemsPane.getChildren().clear();
             
-            for (int i = 0; i < itemsInHistory.size(); i++) {
-                String[] product = model.getProductDetail(itemsInHistory.get(i));
-                String[] order = model.getProductAmount(itemsInHistory.get(i), UserSession.getUserId());
-                addItem(product[0], order[0], product[1], product[2], order[1]);
+            for (int i = 0; i < order.size(); i++) {
+                String[] details = order.get(i);
+                String[] product = model.getProductDetail(Integer.parseInt(details[2]));
+                addItem(product[0], product[1], details[3], product[2], details[1]);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,7 +59,6 @@ public class ShoppingHistoryController implements Initializable {
         
         ShoppingHistoryItemController controller = loader.getController();
         controller.changeLabels(name, price, desc, route, id);
-        
         
         itemsPane.getChildren().add(ks);
     }

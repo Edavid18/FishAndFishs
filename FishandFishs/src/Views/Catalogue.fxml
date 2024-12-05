@@ -45,6 +45,7 @@
                                     <Font name="System Bold" size="33.0" />
                                  </font>
                               </Label>
+                              <Label fx:id="labelTime" layoutX="936.0" layoutY="12.0" styleClass="info_labels" stylesheets="@../CssVista/catalogue.css" />
                            </children>
                         </Pane>
                         <Pane id="main_image" layoutX="71.0" layoutY="107.0" prefHeight="380.0" prefWidth="1181.0" stylesheets="@../CssVista/catalogue.css">
@@ -253,7 +254,7 @@
                                     <Label layoutX="14.0" layoutY="144.0" text="Deviation 6''  Ankle Boot" textFill="#000000ae" />
                                  </children>
                               </Pane>
-                              <Pane fx:id="xtratuf" layoutX="938.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css">
+                              <Pane layoutX="938.0" layoutY="48.0" onMouseClicked="#handleProductClick" prefHeight="241.0" prefWidth="218.0" styleClass="product_element" stylesheets="@../CssVista/catalogue.css" fx:id="xtratuf">
                                  <children>
                                     <ImageView fitHeight="117.0" fitWidth="200.0" layoutX="44.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

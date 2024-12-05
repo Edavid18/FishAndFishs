@@ -5,6 +5,7 @@
 package Controlador;
 
 import DataBase.Conexion;
+import Thread.TimeThread;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -28,8 +29,7 @@ public class Main extends Application{
         try {
             cx.Connection();
             FXMLLoader loader = new FXMLLoader();
-            System.out.println(Main.class.getResource("/Views/LogIn.fxml"));
-            loader.setLocation(Main.class.getResource("/Views/LogIn.fxml"));
+            loader.setLocation(Main.class.getResource("/Views/LandingPage.fxml"));
             Pane ventana = (Pane) loader.load();
             
             // Show the scene containing the root layout.

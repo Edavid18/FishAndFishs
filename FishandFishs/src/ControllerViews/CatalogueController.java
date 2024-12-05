@@ -6,6 +6,7 @@ package ControllerViews;
 
 import Interfaces.Observer;
 import Models.CatalogueModel;
+import Thread.TimeThread;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -74,6 +75,8 @@ public class CatalogueController implements Initializable {
     private Pane fishand;
     @FXML
     private Pane rs270;
+    @FXML
+    private Label labelTime;
     
     public CatalogueController(){
         
@@ -86,6 +89,9 @@ public class CatalogueController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         welcome.setText("Welcome, " + UserSession.getName());
+        TimeThread t = new TimeThread(labelTime);
+        t.start();
+        
     }    
     VistaCompraController obj = new VistaCompraController();
 

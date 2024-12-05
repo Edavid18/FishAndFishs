@@ -17,6 +17,8 @@ import java.util.ArrayList;
  */
 public class ShoppingHistoryModel {
     
+    String lastOrderId = "";
+    
     public ArrayList<Integer> getProdID(int userId) {
         Connection connection = Conexion.getInstance().Connection();
         ArrayList<Integer> prodID = new ArrayList();
@@ -55,23 +57,34 @@ public class ShoppingHistoryModel {
         return details;
     }
     
-    public String[] getProductAmount(int prodId, int userId) {
+    public ArrayList<String[]> getProductAmount(int userId) {
         Connection connection = Conexion.getInstance().Connection();
-        String details[] = new String[2];
+        ArrayList<String[]> details = new ArrayList();
 
-        String query = "SELECT amount, orderId FROM shoppingList WHERE userId = ? AND prodId = ?";
+        String query = "SELECT * FROM history";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, userId);
-            preparedStatement.setInt(2, prodId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()) {
-                details[0] = resultSet.getString("amount");
-                details[1] = resultSet.getString("orderId");
+            while (resultSet.next()) {
+            // Retrieve row data
+            int dbUserId = resultSet.getInt("userId");
+            if (dbUserId == userId) { // Check if the userId matches
+                    String[] rowDetails = new String[4];
+                    rowDetails[0] = resultSet.getString("userId");
+                    rowDetails[1] = resultSet.getString("orderId");
+                    rowDetails[2] = resultSet.getString("prodId");
+                    rowDetails[3] = resultSet.getString("amount");
+                    details.add(rowDetails);
+                }
             }
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return details;
+    }
+    
+    public void setLastOID(String lastOrderId){
+        this.lastOrderId = lastOrderId;
     }
 }

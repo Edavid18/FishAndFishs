@@ -5,6 +5,9 @@
 package Models;
 
 import DataBase.Conexion;
+import Decorator.ITotal;
+import Decorator.Total;
+import Decorator.discount;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,10 +21,12 @@ import java.util.ArrayList;
 public class CheckoutModel {
     
     public double getTotal(ArrayList<Integer> prodId, String discCode){
+        ITotal total = new Total(prodId);
         if (addDesc(discCode)) {
-            return getSubTotal(prodId) * 0.8;
+            total = new discount(total);
+            return total.total();
         } else{
-            return getSubTotal(prodId);
+            return total.total();
         }
     }
     
